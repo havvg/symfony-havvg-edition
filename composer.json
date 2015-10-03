@@ -1,0 +1,68 @@
+{
+    "name": "havvg/symfony-havvg-edition",
+    "description": "The \"Symfony Havvg Edition\" distribution",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Toni Uebernickel",
+            "email": "tuebernickel@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "": ["app", "src"]
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "": "tests"
+        }
+    },
+
+    "minimum-stability": "stable",
+    "require": {
+        "php": "~5.6",
+
+        "symfony/symfony": "~2.7",
+        "symfony/framework-bundle": "~2.7",
+        "symfony/security-bundle": "~2.7",
+        "symfony/monolog-bundle": "~2.7",
+        "symfony/twig-bundle": "~2.7",
+
+        "sensio/framework-extra-bundle": "~3.0",
+        "incenteev/composer-parameter-handler": "~2.0",
+
+        "havvg/dry-bundle": "~3.0"
+    },
+
+    "require-dev": {
+        "phpunit/phpunit": "~5.0",
+        "mockery/mockery": "^0.9.0",
+
+        "behat/behat": "~3.0",
+        "behat/mink": "~1.6",
+        "behat/mink-extension": "~2.0",
+        "behat/mink-browserkit-driver": "~1.2",
+        "behat/symfony2-extension": "~2.0"
+    },
+
+    "extra": {
+        "symfony-app-dir": "app",
+        "symfony-bin-dir": "bin",
+        "symfony-var-dir": "var",
+        "symfony-web-dir": "web",
+        "incenteev-parameters": [{
+            "file": "app/config/environments/parameters.yml"
+        }]
+    },
+
+    "scripts": {
+        "post-install-cmd": [
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters"
+        ],
+        "post-update-cmd": [
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters"
+        ]
+    }
+}

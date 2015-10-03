@@ -1,0 +1,19 @@
+welcome:
+    path: /
+    defaults:
+        _controller: AppBundle:Welcome:index
+
+security_login:
+    path: /login
+    defaults:
+        _controller: security_controller:loginAction
+
+security_login_check:
+    path: /login-check
+    defaults:
+        _controller: security_controller:checkAction
+
+security_logout:
+    path: /logout
+    defaults:
+        _controller: security_controller:logoutAction

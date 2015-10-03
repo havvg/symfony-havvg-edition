@@ -1,0 +1,31 @@
+monolog:
+    handlers:
+        main:
+            type:         fingers_crossed
+            action_level: critical
+            handler:      grouped
+            channels:     [!frontend]
+            excluded_404s:
+                - ^/
+
+        grouped:
+            type: group
+            members:
+                - app
+
+        app:
+            type:  stream
+            path:  %kernel.logs_dir%/app.log
+            level: debug
+
+        translation:
+            type: stream
+            path: %kernel.logs_dir%/translation.log
+            level: debug
+            channels: translation
+
+        stderr:
+            type: stream
+            path: php://stderr
+            level: error
+            channels: [!frontend]

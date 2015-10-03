@@ -1,0 +1,7 @@
+services:
+    # Separate the framework event dispatcher from the domain level.
+    # see AppBundle::build for tags.
+    domain.event_dispatcher:
+        class: Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher
+        arguments:
+            - @service_container

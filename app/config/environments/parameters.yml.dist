@@ -1,0 +1,8 @@
+parameters:
+    bcrypt.cost: 4
+
+    form_html_novalidate: true
+
+    secret: ThisIsAnUnsecureSecret
+    session_cookie_name: PHPSESSION
+    remember_me_key: ThisIsAnUnsecureKey

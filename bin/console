@@ -1,0 +1,32 @@
+#!/usr/bin/env php
+<?php
+
+set_time_limit(0);
+
+use Symfony\Bundle\FrameworkBundle\Console\Application;
+use Symfony\Component\Console\Input\ArgvInput;
+use Symfony\Component\Debug\Debug;
+
+require_once __DIR__.'/../app/autoload.php';
+
+// Read environment
+$env = getenv('SYMFONY_ENV') ?: 'dev';
+$debug = (bool) getenv('SYMFONY_DEBUG');
+$cache = (bool) getenv('SYMFONY_CACHE');
+
+$input = new ArgvInput();
+$env = $input->getParameterOption(array('--env', '-e'), $env);
+$debug = $debug && !$input->hasParameterOption(array('--no-debug', ''));
+
+if ($debug) {
+    Debug::enable();
+}
+
+$kernel = new AppKernel($env, $debug);
+
+if (!$debug) {
+    $kernel->loadClassCache();
+}
+
+$application = new Application($kernel);
+$application->run();

@@ -1,0 +1,13 @@
+default:
+    suites:
+        default:
+            contexts:
+                - Acme\Behat\FeatureContext
+                - Behat\MinkExtension\Context\MinkContext
+
+    extensions:
+        Behat\Symfony2Extension: ~
+        Behat\MinkExtension:
+            browser_name: chrome
+
+            symfony2: ~

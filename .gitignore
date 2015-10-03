@@ -1,0 +1,8 @@
+/app/config/environments/*/local.yml
+/app/config/environments/parameters.yml
+
+/var
+/vendor
+
+/web
+!/web/app.php

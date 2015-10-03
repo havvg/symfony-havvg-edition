@@ -1,0 +1,19 @@
+monolog:
+    handlers:
+        main:
+            type:         fingers_crossed
+            action_level: warning
+            handler:      grouped
+            excluded_404s:
+                - ^/
+
+# Extend this group with additional handlers.
+        grouped:
+            type: group
+            members:
+                - app
+
+        app:
+            type:  stream
+            path:  %kernel.logs_dir%/app.log
+            level: debug

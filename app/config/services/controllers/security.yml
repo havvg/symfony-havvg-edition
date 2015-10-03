@@ -1,0 +1,6 @@
+services:
+    security_controller:
+        class: Acme\Bundle\AppBundle\Controller\SecurityController
+        arguments:
+            - @form.factory
+            - @templating

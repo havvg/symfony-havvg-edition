@@ -1,0 +1,7 @@
+services:
+    form.route_extension:
+        class: Havvg\Bundle\DRYBundle\Form\Extension\RouteExtension
+        arguments:
+            - @router
+        tags:
+            - { name: form.type_extension, alias: form }

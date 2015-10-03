@@ -1,0 +1,26 @@
+framework:
+    secret: %secret%
+
+    esi: true
+    fragments:
+        path: /_fragments
+
+    default_locale: en
+    translator:
+        enabled: true
+
+    router:
+        resource: %kernel.root_dir%/config/environments/%kernel.environment%/routing.yml
+
+    form: true
+
+    templating:
+        engines:
+            - twig
+
+    session:
+        name: %session_cookie_name%
+        cookie_httponly: true
+
+    trusted_proxies:
+        - 127.0.0.1

@@ -1,0 +1,4 @@
+parameters:
+    bcrypt.cost: 16
+
+    form_html_novalidate: false
