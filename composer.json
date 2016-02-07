@@ -9,15 +9,13 @@
             "email": "tuebernickel@gmail.com"
         }
     ],
+
     "autoload": {
-        "psr-4": {
-            "": ["app", "src"]
-        }
+        "psr-4": { "Acme\\": "src/Acme" },
+        "files": [ "app/AppCache.php", "app/AppKernel.php" ]
     },
     "autoload-dev": {
-        "psr-4": {
-            "": "tests"
-        }
+        "psr-4": { "Acme\\": "tests/Acme" }
     },
 
     "minimum-stability": "stable",
