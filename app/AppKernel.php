@@ -47,6 +47,11 @@ class AppKernel extends Kernel
      */
     public function getCacheDir()
     {
+        $env = $this->getEnvParameters();
+        if (!empty($env['kernel.cache_dir'])) {
+            return $env['kernel.cache_dir'];
+        }
+
         return implode(DIRECTORY_SEPARATOR, [
             $this->getRootDir(),
             '..', 'var', 'cache',
@@ -59,6 +64,11 @@ class AppKernel extends Kernel
      */
     public function getLogDir()
     {
+        $env = $this->getEnvParameters();
+        if (!empty($env['kernel.logs_dir'])) {
+            return $env['kernel.logs_dir'];
+        }
+
         return implode(DIRECTORY_SEPARATOR, [
             $this->getRootDir(),
             '..', 'var', 'logs',
