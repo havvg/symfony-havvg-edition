@@ -5,4 +5,4 @@ parameters:
 
     secret: ThisIsAnUnsecureSecret
     session_cookie_name: PHPSESSION
-    remember_me_key: ThisIsAnUnsecureKey
+    remember_me_secret: ThisIsAnUnsecureSecret

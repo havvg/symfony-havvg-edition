@@ -2,5 +2,5 @@ services:
     security_controller:
         class: Application\Bundle\AppBundle\Controller\SecurityController
         arguments:
-            - @form.factory
-            - @templating
+            - '@form.factory'
+            - '@templating'

@@ -2,6 +2,6 @@ services:
     form.route_extension:
         class: Havvg\Bundle\DRYBundle\Form\Extension\RouteExtension
         arguments:
-            - @router
+            - '@router'
         tags:
-            - { name: form.type_extension, alias: form }
+            - { name: 'form.type_extension', extended_type: 'Symfony\Component\Form\Extension\Core\Type\FormType' }

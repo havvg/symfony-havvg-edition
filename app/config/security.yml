@@ -49,7 +49,7 @@ security:
                 default_target_path: /
 
             remember_me:
-                key: %remember_me_key%
+                secret: %remember_me_secret%
                 name: remember-me
                 remember_me_parameter: login[remember_me]
 

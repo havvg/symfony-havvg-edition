@@ -22,27 +22,26 @@
     "require": {
         "php": ">=5.6",
 
-        "symfony/symfony": "~2.7",
-        "symfony/framework-bundle": "~2.7",
-        "symfony/security-bundle": "~2.7",
-        "symfony/monolog-bundle": "~2.7",
-        "symfony/twig-bundle": "~2.7",
+        "symfony/symfony": "^3.0.2",
+        "symfony/monolog-bundle": "^2.4",
+        "sensio/distribution-bundle": "^5.0",
 
-        "sensio/framework-extra-bundle": "~3.0",
-        "incenteev/composer-parameter-handler": "~2.0",
+        "sensio/framework-extra-bundle": "^3.0.2",
+        "incenteev/composer-parameter-handler": "^2.0",
 
-        "havvg/dry-bundle": "~3.0"
+        "havvg/dry-bundle": "4.0.x@dev"
     },
 
     "require-dev": {
-        "phpunit/phpunit": "~5.0",
-        "mockery/mockery": "^0.9.0",
+        "symfony/phpunit-bridge": "^2.7",
+        "phpunit/phpunit": "^5.2.3",
+        "mockery/mockery": "^0.9.4",
 
-        "behat/behat": "~3.0",
-        "behat/mink": "~1.6",
-        "behat/mink-extension": "~2.0",
-        "behat/mink-browserkit-driver": "~1.2",
-        "behat/symfony2-extension": "~2.0"
+        "behat/behat": "^3.1@rc",
+        "behat/mink": "^1.7@dev",
+        "behat/mink-extension": "^2.1@dev",
+        "behat/mink-browserkit-driver": "^1.3.1",
+        "behat/symfony2-extension": "^2.1.1"
     },
 
     "extra": {
@@ -51,6 +50,7 @@
         "symfony-tests-dir": "tests",
         "symfony-var-dir": "var",
         "symfony-web-dir": "web",
+        "symfony-assets-install": "relative",
         "incenteev-parameters": [{
             "file": "app/config/environments/parameters.yml"
         }]
@@ -58,10 +58,16 @@
 
     "scripts": {
         "post-install-cmd": [
-            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters"
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
+            "Application\\Composer\\BootstrapHandler::ensureDirectoriesExist",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets"
         ],
         "post-update-cmd": [
-            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters"
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
+            "Application\\Composer\\BootstrapHandler::ensureDirectoriesExist",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets"
         ]
     }
 }
