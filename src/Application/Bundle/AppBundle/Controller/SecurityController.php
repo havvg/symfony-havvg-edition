@@ -1,7 +1,8 @@
 <?php
 
-namespace Acme\Bundle\AppBundle\Controller;
+namespace Application\Bundle\AppBundle\Controller;
 
+use Application\Bundle\AppBundle\Form\Type\User\LoginType;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\Form\FormFactoryInterface;
@@ -35,7 +36,7 @@ final class SecurityController
 
     public function loginAction(Request $request)
     {
-        $form = $this->formFactory->create('login');
+        $form = $this->formFactory->create(LoginType::class);
 
         if ($error = $this->getAuthenticationError($request)) {
             $form->addError(new FormError($error->getMessage()));

@@ -11,11 +11,11 @@
     ],
 
     "autoload": {
-        "psr-4": { "Acme\\": "src/Acme" },
+        "psr-4": { "Application\\": "src/Application" },
         "files": [ "app/AppCache.php", "app/AppKernel.php" ]
     },
     "autoload-dev": {
-        "psr-4": { "Acme\\": "tests/Acme" }
+        "psr-4": { "Application\\": "tests/Application" }
     },
 
     "minimum-stability": "stable",

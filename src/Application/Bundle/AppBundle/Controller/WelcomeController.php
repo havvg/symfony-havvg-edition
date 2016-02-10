@@ -1,6 +1,6 @@
 <?php
 
-namespace Acme\Bundle\AppBundle\Controller;
+namespace Application\Bundle\AppBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Response;
 

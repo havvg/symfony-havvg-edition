@@ -1,6 +1,6 @@
 <?php
 
-namespace Acme\Bundle\AppBundle;
+namespace Application\Bundle\AppBundle;
 
 use Symfony\Component\DependencyInjection\Compiler\PassConfig;
 use Symfony\Component\DependencyInjection\ContainerBuilder;

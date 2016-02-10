@@ -2,7 +2,7 @@ security:
     encoders:
 # Remove this encoder, see example below.
         Symfony\Component\Security\Core\User\User: plaintext
-#        Acme\Model\User:
+#        Application\Model\User:
 #            algorithm: bcrypt
 #            cost: %bcrypt.cost%
 

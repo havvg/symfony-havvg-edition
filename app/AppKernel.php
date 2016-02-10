@@ -22,7 +22,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Havvg\Bundle\DRYBundle\HavvgDRYBundle(),
 
-            new Acme\Bundle\AppBundle\AppBundle(),
+            new Application\Bundle\AppBundle\AppBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'])) {

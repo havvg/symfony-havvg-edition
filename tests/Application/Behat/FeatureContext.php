@@ -1,6 +1,6 @@
 <?php
 
-namespace Acme\Behat;
+namespace Application\Behat;
 
 use Behat\Behat\Context\Context;
 

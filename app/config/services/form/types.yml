@@ -1,5 +1,5 @@
 services:
     form.login_type:
-        class: Acme\Bundle\AppBundle\Form\Type\LoginType
+        class: Application\Bundle\AppBundle\Form\Type\User\LoginType
         tags:
             - { name: form.type, alias: login }
