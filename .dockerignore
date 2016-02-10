@@ -1,0 +1,6 @@
+*
+!app/
+!bin/
+!src/
+!vendor/
+!web/

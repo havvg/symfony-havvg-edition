@@ -1,0 +1,57 @@
+version: '2'
+
+services:
+    db:
+        image: mysql:5.7
+        ports:
+            - 3306:3306
+        environment:
+            MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+            MYSQL_DATABASE: symfony
+            MYSQL_USER: symfony
+            MYSQL_PASSWORD: symfony
+        volumes:
+            - mysql:/var/lib/mysql
+
+    app:
+        build:
+            context: .
+            dockerfile: .docker/app/Dockerfile
+# for local usage, but beware: this is very slow on non-native platforms
+#        volumes:
+#            - ./:/var/www
+        tty: true
+
+    php:
+        build: .docker/php
+        depends_on:
+            - app
+        links:
+            - db
+        volumes_from:
+            - app
+
+    load:
+        image: tutum/haproxy
+        depends_on:
+            - php
+        links:
+            - php
+        environment:
+            - BACKEND_PORT=9000
+            - BALANCE=roundrobin
+
+    nginx:
+        build: .docker/nginx
+        depends_on:
+            - app
+            - load
+        ports:
+            - 80:80
+        links:
+            - load
+        volumes_from:
+            - app
+
+volumes:
+    mysql: {}
