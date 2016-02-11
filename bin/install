@@ -1,0 +1,19 @@
+#!/bin/bash
+
+npm install && \
+
+bundle install && \
+bundle clean && \
+
+bower install && \
+bower prune && \
+
+composer install --prefer-source && \
+
+gulp && \
+
+phpunit && \
+behat && \
+
+echo "
+Installation completed. All Good!"

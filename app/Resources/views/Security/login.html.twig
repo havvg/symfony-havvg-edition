@@ -1,9 +1,14 @@
-<html>
-    <body>
+{% extends '::base.html.twig' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <h1>Symfony Havvg Edition</h1>
         {{ form_start(form) }}
             {{ form_widget(form) }}
 
-            <button type="submit" name="submit">Login</button>
+            <button class="btn btn-lg btn-primary btn-block" type="submit" name="submit">Log in</button>
         {{ form_end(form) }}
-    </body>
-</html>
+    </div>
+</div>
+{% endblock %}

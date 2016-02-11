@@ -2,12 +2,27 @@
 
 namespace Application\Bundle\AppBundle\Controller;
 
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 
-class WelcomeController
+final class WelcomeController
 {
-    public function indexAction()
+    /**
+     * @var EngineInterface
+     */
+    private $templating;
+
+    /**
+     * Constructor.
+     *
+     * @param EngineInterface $templating
+     */
+    public function __construct(EngineInterface $templating)
     {
-        return new Response('This is rendered by WelcomeController::indexAction.');
+        $this->templating = $templating;
+    }
+
+    public function helloAction()
+    {
+        return $this->templating->renderResponse('Welcome/hello.html.twig');
     }
 }

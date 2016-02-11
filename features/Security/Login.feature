@@ -10,8 +10,7 @@ Feature: Logging in to the application
         When I fill in the following:
             | Username | tester   |
             | Password | testpass |
-         And I press "Login"
-        Then print last response
+         And I press "Log in"
         Then I should be on "/"
          And the response status code should be 200
 
@@ -19,7 +18,7 @@ Feature: Logging in to the application
         When I fill in the following:
             | Username | tester    |
             | Password | wrongpass |
-         And I press "Login"
+         And I press "Log in"
         Then I should be on "/login"
          And the response status code should be 200
          And I should see text matching "Bad credentials."

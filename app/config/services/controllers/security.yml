@@ -1,4 +1,9 @@
 services:
+    welcome_controller:
+        class: Application\Bundle\AppBundle\Controller\WelcomeController
+        arguments:
+            - '@templating'
+
     security_controller:
         class: Application\Bundle\AppBundle\Controller\SecurityController
         arguments:

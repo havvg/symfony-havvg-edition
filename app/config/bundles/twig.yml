@@ -2,5 +2,8 @@ twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
 
+    form_themes:
+        - :Form:layout.html.twig
+
     globals:
         form_html_novalidate: '%form_html_novalidate%'

@@ -1,7 +1,7 @@
 welcome:
     path: /
     defaults:
-        _controller: AppBundle:Welcome:index
+        _controller: welcome_controller:helloAction
 
 security_login:
     path: /login
