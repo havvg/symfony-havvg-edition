@@ -45,6 +45,14 @@ class AppKernel extends Kernel
     /**
      * {@inheritdoc}
      */
+    public function getRootDir()
+    {
+        return __DIR__;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function getCacheDir()
     {
         $env = $this->getEnvParameters();
