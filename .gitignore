@@ -1,6 +1,8 @@
 /app/config/environments/*/local.yml
 /app/config/environments/parameters.yml
 
+!composer.lock
+
 /var
 /vendor
 
