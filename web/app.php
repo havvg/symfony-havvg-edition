@@ -18,8 +18,6 @@ if ($debug) {
 $kernel = new AppKernel($env, $debug);
 
 if (!$debug) {
-    $loader->unregister();
-
     $loader = new ApcClassLoader(sha1(__FILE__), $loader);
     $loader->register(true);
 
