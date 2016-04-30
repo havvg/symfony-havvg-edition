@@ -48,6 +48,7 @@ services:
             - load
         ports:
             - 80:80
+            - 443:443
         links:
             - load
         volumes_from:
