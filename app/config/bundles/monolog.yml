@@ -15,5 +15,5 @@ monolog:
 
         app:
             type:  stream
-            path:  %kernel.logs_dir%/app.log
+            path:  '%kernel.logs_dir%/app.log'
             level: debug

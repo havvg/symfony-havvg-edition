@@ -1,5 +1,5 @@
 framework:
-    secret: %secret%
+    secret: '%secret%'
 
     esi: true
     fragments:
@@ -10,7 +10,7 @@ framework:
         enabled: true
 
     router:
-        resource: %kernel.root_dir%/config/environments/%kernel.environment%/routing.yml
+        resource: '%kernel.root_dir%/config/environments/%kernel.environment%/routing.yml'
 
     form: true
 
@@ -19,7 +19,7 @@ framework:
             - twig
 
     session:
-        name: %session_cookie_name%
+        name: '%session_cookie_name%'
         cookie_httponly: true
 
     trusted_proxies:
