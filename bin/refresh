@@ -3,9 +3,6 @@
 npm install && \
 npm prune && \
 
-bundle install && \
-bundle clean && \
-
 bower install && \
 bower prune && \
 
