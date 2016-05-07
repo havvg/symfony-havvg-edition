@@ -1,67 +1,68 @@
 var gulp = require('gulp'),
-    sass = require('gulp-ruby-sass'),
-    minifycss = require('gulp-minify-css'),
-    uglify = require('gulp-uglify'),
-    concat = require('gulp-concat'),
-    merge = require('merge2');
+    g = require('gulp-load-plugins')(),
 
-var config = {
-    bowerDir: './web/vendor',
-    webDir: './web',
-    sassDir: './app/Resources/sass',
-    jsDir: './app/Resources/js'
-};
+    d = {
+        bower: './web/vendor',
+        js: './app/Resources/js',
+        sass: './app/Resources/sass',
+        web: './web'
+    };
 
 gulp.task('fonts', function() {
     gulp.src([
-        config.bowerDir + '/font-awesome/fonts/*.*'
+        d.bower + '/font-awesome/fonts/*.*'
     ])
-    .pipe(gulp.dest(config.webDir + '/fonts'));
+    .pipe(gulp.dest(d.web + '/fonts'));
 });
 
 gulp.task('styles', function() {
-    merge(
-        sass(config.sassDir + '/styles.scss', {
-            loadPath: [
-                config.bowerDir + '/bootstrap/scss'
-            ]
-        }),
-        gulp.src([
-            config.bowerDir + '/font-awesome/css/font-awesome.min.css'
-        ])
-    )
-    .pipe(concat('styles.css'))
-    .pipe(minifycss())
-    .pipe(gulp.dest(config.webDir + '/css'));
+    var options = {
+        includePaths: [
+            d.sass,
+            d.bower,
+            d.bower + '/bootstrap/scss',
+            d.bower + '/font-awesome/scss'
+        ]
+    };
+
+    return gulp.src([
+        d.sass + '/styles.scss'
+    ])
+    .pipe(g.sass(options))
+    .pipe(g.concat('styles.css'))
+    .pipe(g.cleanCss())
+    .pipe(gulp.dest(d.web + '/css'))
+    .pipe(g.livereload())
 });
 
 gulp.task('scripts', function() {
-    gulp.src([
-        config.jsDir + '/**/*.js'
+    return gulp.src([
+        d.js + '/**/*.js'
     ])
-    .pipe(concat('app.js'))
-    .pipe(uglify())
-    .pipe(gulp.dest(config.webDir + '/js'));
+    .pipe(g.concat('app.js'))
+    .pipe(g.uglify())
+    .pipe(gulp.dest(d.web + '/js'))
+    .pipe(g.livereload())
 });
 
-gulp.task('vendor-scripts', function() {
-    gulp.src([
-        config.bowerDir + '/jquery/dist/jquery.js',
-        config.bowerDir + '/bootstrap/dist/js/bootstrap.js'
+gulp.task('scripts-vendor', function() {
+    return gulp.src([
+        d.bower + '/jquery/dist/jquery.js',
+        d.bower + '/bootstrap/dist/bootstrap.js'
     ])
-    .pipe(concat('vendor.js'))
-    .pipe(uglify())
-    .pipe(gulp.dest(config.webDir + '/js'));
+    .pipe(g.concat('vendor.js'))
+    .pipe(g.uglify())
+    .pipe(gulp.dest(d.web + '/js'))
 });
 
 gulp.task('default', [
     'fonts',
     'styles',
-    'vendor-scripts',
+    'scripts-vendor',
     'scripts'
 ]);
 
 gulp.task('watch', function() {
-    gulp.watch(config.sassDir + '/**/*.scss', ['styles']);
-    gulp.watch(config.jsDir + '/**/*.js', ['scripts']);
+    gulp.watch(d.sass + '/**/*.scss', ['styles']);
+    gulp.watch(d.js + '/**/*.js', ['scripts']);
 });

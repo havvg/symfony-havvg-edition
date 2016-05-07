@@ -1,14 +1,11 @@
 /.sass-cache
-
 /app/config/environments/*/local.yml
 /app/config/environments/parameters.yml
-
 !composer.lock
 !Gemfile.lock
+/frontend/vendor
 /node_modules
-
 /var
 /vendor
-
 /web
 !/web/app.php
