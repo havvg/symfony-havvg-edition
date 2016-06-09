@@ -2,17 +2,17 @@ var gulp = require('gulp'),
     g = require('gulp-load-plugins')(),
 
     d = {
-        bower: './web/vendor',
-        js: './app/Resources/js',
-        sass: './app/Resources/sass',
+        bower: './frontend/vendor',
+        js: './frontend/js',
+        sass: './frontend/sass',
         web: './web'
     };
 
 gulp.task('fonts', function() {
-    gulp.src([
+    return gulp.src([
         d.bower + '/font-awesome/fonts/*.*'
     ])
-    .pipe(gulp.dest(d.web + '/fonts'));
+    .pipe(gulp.dest(d.web + '/fonts'))
 });
 
 gulp.task('styles', function() {
@@ -48,7 +48,7 @@ gulp.task('scripts', function() {
 gulp.task('scripts-vendor', function() {
     return gulp.src([
         d.bower + '/jquery/dist/jquery.js',
-        d.bower + '/bootstrap/dist/bootstrap.js'
+        d.bower + '/bootstrap/dist/js/bootstrap.js'
     ])
     .pipe(g.concat('vendor.js'))
     .pipe(g.uglify())
@@ -63,6 +63,8 @@ gulp.task('default', [
 ]);
 
 gulp.task('watch', function() {
+    g.livereload.listen();
+
     gulp.watch(d.sass + '/**/*.scss', ['styles']);
     gulp.watch(d.js + '/**/*.js', ['scripts']);
 });
