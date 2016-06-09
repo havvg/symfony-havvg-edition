@@ -1,5 +1,0 @@
-services:
-    form.login_type:
-        class: Application\Bundle\AppBundle\Form\Type\User\LoginType
-        tags:
-            - { name: 'form.type', alias: 'login' }
