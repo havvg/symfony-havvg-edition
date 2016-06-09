@@ -32,10 +32,10 @@ security:
         app:
             pattern: ^/
 
+# Secure the whole application.
+#            anonymous: false
             anonymous: ~
 
-# Secure the whole application.
-#            pattern: ^/
             form_login:
                 # Define the routes below
                 login_path: security_login
